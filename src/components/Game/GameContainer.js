@@ -9,8 +9,25 @@ import RestaurantChooser from '../RestaurantChooser'
 
 class GameContainer extends Component {
 
-  render() {
+  constructor() {
+    super()
+    this.state={
+      game:{}
+    }
+  }
 
+  //fetch current game
+  componentDidMount(){
+    fetch('http://localhost:3000/games/1')
+    .then(resp => resp.json())
+    .then(data => {
+      this.setState({
+        game:data
+      })
+    })
+  }
+
+  render() {
     // map the `scale` prop we define below to the transform style property
     function mapStyles(styles) {
       return {
