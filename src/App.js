@@ -1,15 +1,18 @@
 import React from 'react';
 import logo from './logo.svg';
 import './styles/App.scss';
-import Component from './components/Component';
+import Game from './components/Game'
+//import Component from './components/Component';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <Game />
+
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
           <Component />
-      </header>
+      </header> */}
     </div>
   );
 }

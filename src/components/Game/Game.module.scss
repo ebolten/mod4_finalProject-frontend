@@ -1,0 +1,26 @@
+.gameContainer {
+  border: 5px dotted black;
+
+  &::before {
+    content: "";
+    display: block;
+    padding-bottom: calc(100% / (16/9));
+  }
+}
+
+.outerGameContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.innerGameContainer {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-flow: column wrap;
+  align-content: center;
+  justify-content: center;
+}
