@@ -6,6 +6,7 @@ import { spring, AnimatedSwitch } from 'react-router-transition';
 import style from './Stage.module.scss';
 import StartScreen from '../StartScreen'
 import RestaurantChooser from '../RestaurantChooser'
+import Game from '../Game'
 
 class StageContainer extends Component {
 
@@ -17,29 +18,19 @@ class StageContainer extends Component {
   }
 
   //begin the game (make post request) and set state of game
-  startStage = (restaurant) => {
-    let {id,food} = restaurant
+  startGame = (restaurant) => {
+    let {id} = restaurant
         
-    fetch('http://localhost:3000/games',{
+    fetch('http://localhost:3000/games', {
       method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        Accept:'application/json'
-      },
+      headers:{ 'Content-Type':'application/json' },
       body:JSON.stringify({
-        user_id:1,
-        restaurant_id:id,
-        score:0,
-        level:1,
-        money:1
+        user_id: 1, restaurant_id: id,
+        score: 0, level: 1, money: 1
       })
     })
     .then(resp => resp.json())
-    .then(data => {
-      this.setState({
-        game:data
-      })
-    })
+    .then(data => this.setState({ game: data }))
   }
 
   render() {
@@ -72,6 +63,8 @@ class StageContainer extends Component {
       },
     };
 
+    let {game} = this.state
+
     return (
       <Fragment>
         <div className={style.gameContainer}>
@@ -86,13 +79,19 @@ class StageContainer extends Component {
                 className="switch-wrapper">
 
                 <Route exact path="/" render={() => {
-                  return <StartScreen message={"Pancake Stage!"} newStage={this.newStage} />
+                  return <StartScreen message={"Pancake Game!"} newStage={this.newStage} />
                 }}/>
 
                 <Route exact path="/game" render={() => {
-                  return <RestaurantChooser startStage={this.startStage} />
-
+                  return <RestaurantChooser startGame={this.startGame} />
                 }}/>
+
+                {/* <Route exact path={`/game/${game.id}`} render={() => {
+                  return <Game id={game.id} />
+                }} /> */}
+                <Route exact path={`/game/1`} render={() => {
+                  return <Game game={this.state.game} />
+                }} />
 
               </AnimatedSwitch>
 
