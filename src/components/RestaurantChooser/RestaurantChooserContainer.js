@@ -9,6 +9,7 @@ class RestaurantChooserContainer extends React.Component {
     restaurants: []
   }
 
+  //fetch restaurants to choose from api
   componentDidMount() {
     fetch("http://localhost:3000/restaurants").then(r => r.json())
     .then(restaurants => this.setState({restaurants}))
