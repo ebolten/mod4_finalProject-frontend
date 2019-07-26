@@ -16,19 +16,30 @@ class GameContainer extends Component {
     }
   }
 
-  //fetch current game
-  componentDidMount(){
-    fetch('http://localhost:3000/games/1')
+  //begin the game (make post request) and set state of game
+  startGame = (restaurant) => {
+    let {id,food} = restaurant
+        
+    fetch('http://localhost:3000/games',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        Accept:'application/json'
+      },
+      body:JSON.stringify({
+        user_id:1,
+        restaurant_id:id,
+        score:0,
+        level:1,
+        money:1
+      })
+    })
     .then(resp => resp.json())
     .then(data => {
       this.setState({
         game:data
       })
     })
-  }
-
-  startGame = (restauant) => {
-    console.log(restauant)
   }
 
   render() {
