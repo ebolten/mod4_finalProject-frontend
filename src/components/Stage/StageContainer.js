@@ -3,11 +3,11 @@ import React, {Component, Fragment} from 'react';
 import { Route, withRouter } from 'react-router-dom'
 import { spring, AnimatedSwitch } from 'react-router-transition';
 
-import style from './Game.module.scss';
+import style from './Stage.module.scss';
 import StartScreen from '../StartScreen'
 import RestaurantChooser from '../RestaurantChooser'
 
-class GameContainer extends Component {
+class StageContainer extends Component {
 
   constructor() {
     super()
@@ -17,7 +17,7 @@ class GameContainer extends Component {
   }
 
   //begin the game (make post request) and set state of game
-  startGame = (restaurant) => {
+  startStage = (restaurant) => {
     let {id,food} = restaurant
         
     fetch('http://localhost:3000/games',{
@@ -75,8 +75,8 @@ class GameContainer extends Component {
     return (
       <Fragment>
         <div className={style.gameContainer}>
-          <div className={style.outerGameContainer}>
-            <div className={style.innerGameContainer}>
+          <div className={style.outerStageContainer}>
+            <div className={style.innerStageContainer}>
 
               <AnimatedSwitch
                 atEnter={bounceTransition.atEnter}
@@ -86,11 +86,11 @@ class GameContainer extends Component {
                 className="switch-wrapper">
 
                 <Route exact path="/" render={() => {
-                  return <StartScreen message={"Pancake Game!"} newGame={this.newGame} />
+                  return <StartScreen message={"Pancake Stage!"} newStage={this.newStage} />
                 }}/>
 
                 <Route exact path="/game" render={() => {
-                  return <RestaurantChooser startGame={this.startGame} />
+                  return <RestaurantChooser startStage={this.startStage} />
 
                 }}/>
 
@@ -104,6 +104,6 @@ class GameContainer extends Component {
   }
 }
 
-export default withRouter(GameContainer)
+export default withRouter(StageContainer)
 
 
