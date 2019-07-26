@@ -30,3 +30,26 @@ button {
   }
 }
 
+.switch-wrapper {
+  height: 100%;
+  width: 100%;
+  
+}
+ 
+.switch-wrapper > div {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+
+  // https://matthewlein.com/tools/ceaser
+  transition: all 600ms cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
+
+}
+

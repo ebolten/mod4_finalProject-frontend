@@ -1,30 +1,65 @@
 // component-name-container.js is your business logic and state management as handled before being sent to the stateless view Component.
 import React, {Component, Fragment} from 'react';
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
-import styles from './Game.module.scss';
+import { Route, withRouter } from 'react-router-dom'
+import { spring, AnimatedSwitch } from 'react-router-transition';
+
+import style from './Game.module.scss';
 import StartScreen from '../StartScreen'
 import RestaurantChooser from '../RestaurantChooser'
 
 class GameContainer extends Component {
 
-  newGame = () => {
-    console.log("new game")
-  }
-
   render() {
+
+    // map the `scale` prop we define below to the transform style property
+    function mapStyles(styles) {
+      return {
+        opacity: styles.opacity,
+        transform: `scale(${styles.scale})`,
+      };
+    }
+
+    function bounce(val) {
+      return spring(val, {
+        stiffness: 330, damping: 22,
+      });
+    }
+    
+    const bounceTransition = {
+      atEnter: {
+        opacity: 0, scale: 0.8,
+      },
+      atLeave: {
+        opacity: bounce(0), scale: bounce(1.2),
+      },
+      atActive: {
+        opacity: bounce(1), scale: bounce(1),
+      },
+    };
+
     return (
       <Fragment>
-        <div className={styles.gameContainer}>
-          <div className={styles.outerGameContainer}>
-            <div className={styles.innerGameContainer}>
-              <Switch>
+        <div className={style.gameContainer}>
+          <div className={style.outerGameContainer}>
+            <div className={style.innerGameContainer}>
+
+              <AnimatedSwitch
+                atEnter={bounceTransition.atEnter}
+                atLeave={bounceTransition.atLeave}
+                atActive={bounceTransition.atActive}
+                mapStyles={mapStyles}
+                className="switch-wrapper">
+
                 <Route exact path="/" render={() => {
                   return <StartScreen message={"Pancake Game!"} newGame={this.newGame} />
                 }}/>
+
                 <Route exact path="/game" render={() => {
                   return <RestaurantChooser />
                 }}/>
-              </Switch>
+
+              </AnimatedSwitch>
+
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 .gameContainer {
-  border: 5px dotted black;
+  border: 5px solid black;
+  overflow: hidden;
 
   &::before {
     content: "";
