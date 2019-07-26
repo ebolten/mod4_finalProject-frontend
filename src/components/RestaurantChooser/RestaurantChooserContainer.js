@@ -28,6 +28,7 @@ class RestaurantChooserContainer extends React.Component {
               key={restaurant.id} 
               restaurant={restaurant} 
               styles={styles}
+              startGame={this.props.startGame}
             />
           )
         })}

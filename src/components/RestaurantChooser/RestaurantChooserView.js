@@ -7,7 +7,7 @@ function RestaurantChooserView(props) {
   return (
     <div className={styles.restaurantChooserView}>
       <img src={require("../../assets/images/building-placeholder.png")} alt={restaurant.food + " house"} />
-      <button>make {restaurant.food}</button>
+      <button onClick={() => props.startGame(restaurant)}>make {restaurant.food}</button>
     </div>
   )
 }

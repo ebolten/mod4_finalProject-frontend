@@ -27,6 +27,10 @@ class GameContainer extends Component {
     })
   }
 
+  startGame = (restauant) => {
+    console.log(restauant)
+  }
+
   render() {
     // map the `scale` prop we define below to the transform style property
     function mapStyles(styles) {
@@ -75,7 +79,8 @@ class GameContainer extends Component {
                 }}/>
 
                 <Route exact path="/game" render={() => {
-                  return <RestaurantChooser />
+                  return <RestaurantChooser startGame={this.startGame} />
+
                 }}/>
 
               </AnimatedSwitch>
