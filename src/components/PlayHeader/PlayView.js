@@ -5,9 +5,8 @@ function GameView(props) {
   const {message, styles} = props
 
   return (
-    <div>
-      <h1 className={styles.example}>{message}</h1>
-    </div>
+    <h1 className={styles.example}>{message}</h1>
   )
 }
+
 export default GameView

@@ -1,6 +1,6 @@
 // component-name-container.js is your business logic and state management as handled before being sent to the stateless view Component.
 import React, {Component, Fragment} from 'react';
-import { Route, withRouter } from 'react-router-dom'
+import { Route, withRouter, Link } from 'react-router-dom'
 import { spring, AnimatedSwitch } from 'react-router-transition';
 
 import style from './Stage.module.scss';
@@ -20,7 +20,7 @@ class StageContainer extends Component {
   //begin the game (make post request) and set state of game
   startGame = (restaurant) => {
     let {id} = restaurant
-        
+    
     fetch('http://localhost:3000/games', {
       method:'POST',
       headers:{ 'Content-Type':'application/json' },
@@ -30,7 +30,7 @@ class StageContainer extends Component {
       })
     })
     .then(resp => resp.json())
-    .then(data => this.setState({ game: data }))
+    .then(data => this.setState({ game:data }))
   }
 
   render() {
@@ -71,6 +71,7 @@ class StageContainer extends Component {
           <div className={style.outerStageContainer}>
             <div className={style.innerStageContainer}>
 
+              {/* the switch to another screen animation */}
               <AnimatedSwitch
                 atEnter={bounceTransition.atEnter}
                 atLeave={bounceTransition.atLeave}
@@ -78,23 +79,22 @@ class StageContainer extends Component {
                 mapStyles={mapStyles}
                 className="switch-wrapper">
 
+                {/* take user to start screen */}
                 <Route exact path="/" render={() => {
                   return <StartScreen message={"Pancake Game!"} newStage={this.newStage} />
                 }}/>
 
+                {/* take user to choose restaurant page */}
                 <Route exact path="/game" render={() => {
                   return <RestaurantChooser startGame={this.startGame} />
                 }}/>
 
-                {/* <Route exact path={`/game/${game.id}`} render={() => {
-                  return <Game id={game.id} />
-                }} /> */}
-                <Route exact path={`/game/1`} render={() => {
+                {/* take user to their game */}
+                <Route exact path={`/game/playing`} render={() => {
                   return <Game game={this.state.game} />
                 }} />
 
               </AnimatedSwitch>
-
             </div>
           </div>
         </div>
@@ -104,5 +104,3 @@ class StageContainer extends Component {
 }
 
 export default withRouter(StageContainer)
-
-

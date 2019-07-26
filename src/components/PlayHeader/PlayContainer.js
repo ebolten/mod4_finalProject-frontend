@@ -3,12 +3,11 @@ import React from 'react';
 import styles from './Game.module.scss';
 import GameView from './GameView';
 
-class GameContainer extends React.Component {
+class PlayContainer extends React.Component {
+
   render() {
     return (
-      <div>
-        <GameView message={this.props.game.id} styles={styles} />
-      </div>
+      {/* some code for the header will go here */}
     )
   }
 }

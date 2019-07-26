@@ -2,6 +2,8 @@
 import React from 'react';
 import styles from './RestaurantChooser.module.scss';
 import RestaurantChooserView from './RestaurantChooserView';
+import { Link } from 'react-router-dom'
+
 
 class RestaurantChooserContainer extends React.Component {
 
@@ -16,14 +18,13 @@ class RestaurantChooserContainer extends React.Component {
   }
 
   render() {
-
     const restaurants = this.state.restaurants
     
     return (
       <div className={styles.restaurantChooserContainer}>
         <h1>Choose a Restaurant</h1>
         {restaurants.map(restaurant => {
-          return ( 
+          return (
             <RestaurantChooserView 
               key={restaurant.id} 
               restaurant={restaurant} 
@@ -32,6 +33,9 @@ class RestaurantChooserContainer extends React.Component {
             />
           )
         })}
+        {/* send a link to begin the game */}
+        <Link to="/game/playing">Start Your Game</Link>
+
       </div>
     )
   }

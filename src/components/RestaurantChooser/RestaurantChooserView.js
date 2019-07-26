@@ -6,10 +6,9 @@ function RestaurantChooserView(props) {
 
   return (
     <div className={styles.restaurantChooserView}>
-      <img src={require("../../assets/images/building-placeholder.png")} alt={restaurant.food + " house"} />
+      <img src={require(`../../assets/images/game_${restaurant.food}.png`)} alt={restaurant.food + " house"} />
       <button onClick={() => props.startGame(restaurant)}>make {restaurant.food}</button>
     </div>
   )
 }
-
 export default RestaurantChooserView
