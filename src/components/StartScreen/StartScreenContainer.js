@@ -8,7 +8,7 @@ class StartScreenContainer extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <StartScreenView message={this.props.message} styles={styles} newGame={this.props.newGame} />
+        <StartScreenView message={this.props.message} styles={styles} />
       </React.Fragment>
     )
   }

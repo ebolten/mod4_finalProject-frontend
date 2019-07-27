@@ -54,7 +54,7 @@ class StageContainer extends Component {
 
                 {/* take user to start screen */}
                 <Route exact path="/" render={() => {
-                  return <StartScreen message={"Pancake Game!"} newStage={this.newStage} />
+                  return <StartScreen message={"Pancake Game!"} />
                 }}/>
 
                 {/* take user to choose restaurant page */}
