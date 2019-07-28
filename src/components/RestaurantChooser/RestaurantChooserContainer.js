@@ -1,5 +1,5 @@
 // component-name-container.js is your business logic and state management as handled before being sent to the stateless view RestaurantChooser.
-import React from 'react';
+import React, {Fragment} from 'react';
 import styles from './RestaurantChooser.module.scss';
 import RestaurantChooserView from './RestaurantChooserView';
 import { Link } from 'react-router-dom'
@@ -36,31 +36,30 @@ class RestaurantChooserContainer extends React.Component {
       alert("Please select a food to flip!")
       e.preventDefault()
     }
-    
   }
 
   render() {
     
+    const {message} = this.props
+
     return (
-      <div className={styles.restaurantChooserContainer}>
-        <h1 className={styles.pageTitle}>Choose a Restaurant</h1>
-        <div className={styles.restaurantList}>
+      <Fragment>
+        <h1 style={{marginBottom: 0}}>{message}</h1>
+        <div className="restaurant-list">
           {this.state.restaurants.map(restaurant => {
             return (
               <RestaurantChooserView 
                 key={restaurant.id} 
-                restaurant={restaurant} 
-                styles={styles}
+                restaurant={restaurant}
                 active={this.state.restaurantChoice === restaurant.id}
                 setRestaurant={this.setRestaurant} 
               />
           )})}
         </div>
         <Link to="/game/playing" onClick={this.createGame}>Start Your Game</Link>
-      </div>
+      </Fragment>
     )
   }
-
 }
 
 export default RestaurantChooserContainer

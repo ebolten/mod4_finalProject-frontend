@@ -3,11 +3,11 @@ import React from 'react';
 
 function RestaurantChooserView(props)  {
 
-    const {restaurant, styles, setRestaurant, active} = props
+    const {restaurant, setRestaurant, active} = props
 
     return (
       <div 
-        className={styles.restaurantChooserView} data-active={active} onClick={() => setRestaurant(restaurant.id)}>
+        className="restaurant-chooser-view" data-active={active} onClick={() => setRestaurant(restaurant.id)}>
         <img src={require(`../../assets/images/game_${restaurant.food}.png`)} alt={restaurant.food + "!"} />
       </div>
     )
