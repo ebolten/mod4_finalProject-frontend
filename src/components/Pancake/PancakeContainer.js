@@ -88,8 +88,9 @@ class PancakeContainer extends React.Component {
             <div className="burner" data-id="4" onClick={this.addPancakeToBurner}></div>
             <div className="burner" data-id="5" onClick={this.addPancakeToBurner}></div>
             <div className="burner" data-id="6" onClick={this.addPancakeToBurner}></div>
+
+            <div className="Game__pancakes">{pans}</div>
           </div>
-          <div className="Game__pancakes">{pans}</div>
         </div>
       </div>
     )

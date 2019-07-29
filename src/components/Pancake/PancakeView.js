@@ -48,12 +48,12 @@ class Pancake extends React.Component {
     // first side
     if (!flippedAt) {
       if (timeCooked < 2) return "raw";
-      if (timeCooked === 2) return "cooked";
+      if (timeCooked >= 2 && timeCooked <= 6) return "cooked";
       return "burnt";
     }
 
     //second side
-    if (flippedAt > 2 || timeCooked > 4) return "burnt";
+    if (flippedAt > 6 || timeCooked > 4) return "burnt";
     if (timeCooked === 4 && flippedAt === 2) return "cooked";
     return "raw";
   };

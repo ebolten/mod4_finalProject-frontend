@@ -211,8 +211,13 @@ button {
   background-color: #F0E68C;
 
   &__content {
-    padding-top: 25px;
-    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0; left: 0;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
   }
 }
 
