@@ -9,6 +9,10 @@ class PancakeContainer extends React.Component {
     this.state = {
       //time: undefined,
       pancakes: [],
+      burners: {
+        1: [], 2: [], 3: [],
+        4: [], 5: [], 6: []
+      },
       cooked: 0,
       burnt: 0,
       raw: 0
@@ -33,6 +37,18 @@ class PancakeContainer extends React.Component {
     } 
     else {
       alert("There's no more room!")
+    }
+  }
+
+  addPancakeToBurner = (event) => {
+    const id = event.target.dataset.id;
+
+    if (this.state.burners[id].length === 0) {
+      this.setState({
+        burners: {
+          ...this.state.burners, [id]: Date.now()
+        }
+      })
     }
   }
 
@@ -61,24 +77,19 @@ class PancakeContainer extends React.Component {
             <div className="Game__score --burnt">Burnt: {burnt}</div>
             <div className="Game__score --raw">Raw: {raw}</div>
           </div>
-          <button
-            onClick={this.addPancake}
-            className="Game__button"
-          >
-            New pancake!
-          </button>
+          <button onClick={this.addPancake} className="Game__button">New pancake!</button>
         </div>
 
         <div className="stoveTop">
           <div className="burners">
-            <div className="burner" data-id="1"></div>
-            <div className="burner" data-id="2"></div>
-            <div className="burner" data-id="3"></div>
-            <div className="burner" data-id="4"></div>
-            <div className="burner" data-id="5"></div>
-            <div className="burner" data-id="6"></div>
-            <div className="Game__pancakes">{pans}</div>
+            <div className="burner" data-id="1" onClick={this.addPancakeToBurner}></div>
+            <div className="burner" data-id="2" onClick={this.addPancakeToBurner}></div>
+            <div className="burner" data-id="3" onClick={this.addPancakeToBurner}></div>
+            <div className="burner" data-id="4" onClick={this.addPancakeToBurner}></div>
+            <div className="burner" data-id="5" onClick={this.addPancakeToBurner}></div>
+            <div className="burner" data-id="6" onClick={this.addPancakeToBurner}></div>
           </div>
+          <div className="Game__pancakes">{pans}</div>
         </div>
       </div>
     )
