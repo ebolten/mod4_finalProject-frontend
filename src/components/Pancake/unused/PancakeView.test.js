@@ -1,0 +1,1 @@
+// component-name-view.js is your stateless view FlippyDisc. For the majority of cases, this FlippyDisc should be able to be pure functional FlippyDisc (no hooks!).

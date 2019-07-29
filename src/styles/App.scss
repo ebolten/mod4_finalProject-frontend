@@ -140,3 +140,92 @@ button {
     }
   }
 }
+
+
+/* Pancake
+/------------------------------------*/
+
+.circle {
+  $plateWidth: 30%;
+  width: $plateWidth;
+  padding-top: $plateWidth;
+  margin: 2% 0;
+  border-radius: 50%;
+}
+
+.Game {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  &__score {
+    display: inline-block;
+    text-align: center;
+    width: 33.3%;
+  }
+
+  &__pancakes {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: absolute;
+  }
+}
+
+
+
+.stoveTop {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  width: 70%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .burners {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .burner {
+    @extend .circle;
+    background: none;
+    box-shadow: 0px 0px 2px#000 inset;
+  }
+}
+
+.GameHeader {
+  height: 50px;
+  width: 100%;
+  border-bottom: 5px solid;
+}
+
+
+
+.Pancake {
+  @extend .circle;
+  background-color: #F0E68C;
+
+  &__content {
+    padding-top: 25px;
+    display: none;
+  }
+}
+
+.--cooked {
+  background-color: #846644;
+  color: white;
+}
+
+.--burnt {
+  background-color: #46381B;
+  color: white;
+}
+
+.--raw {
+  background-color: #F0E68C;
+}
