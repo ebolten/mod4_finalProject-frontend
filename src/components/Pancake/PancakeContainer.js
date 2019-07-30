@@ -40,6 +40,7 @@ class PancakeContainer extends React.Component {
     }
   }
 
+  //add a new pancake to the burner
   addPancakeToBurner = (event) => {
     const id = event.target.dataset.id;
 
@@ -52,6 +53,7 @@ class PancakeContainer extends React.Component {
     }
   }
 
+  //take the pancake off of the burner
   takeItOff = (id, status) => {
     const { pancakes, cooked, burnt, raw } = this.state;
 

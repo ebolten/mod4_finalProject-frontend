@@ -20,6 +20,7 @@ class RestaurantChooserContainer extends React.Component {
     this.setState({restaurantChoice: id})
   }
 
+  //create a new game session
   createGame = (e) => {
     if (this.state.restaurantChoice !== null) {
       fetch('http://localhost:3000/games', {

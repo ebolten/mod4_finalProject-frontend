@@ -7,7 +7,7 @@ class PlayContainer extends React.Component {
 
   render() {
     return (
-      {/* some code for the header will go here */}
+      <div> --hello I will hold information about this game-- </div>
     )
   }
 }
