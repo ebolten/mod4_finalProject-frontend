@@ -7,7 +7,7 @@ class GameHeaderContainer extends React.Component {
 
   constructor() {
     super()
-    this.state={
+    this.state={ 
       user:null
     }
   }
@@ -24,18 +24,7 @@ class GameHeaderContainer extends React.Component {
   }
 
   //will render the user playing this game
-  getUser = (userId) => {
-      if (userId !== undefined) {
-      fetch(`http://localhost:3000/users/${userId}`)
-      .then(resp => resp.json())
-      .then(data => {
-        this.setState({
-          user:data.username,
-          game:this.props.game
-        })
-      })
-    }
-  }
+  
 
   //will update the game session in the database
   updateSession = (gameId) => {
@@ -46,21 +35,8 @@ class GameHeaderContainer extends React.Component {
 
   render() {
     return (
-      <div> 
-        
-        {this.getUser(this.props.game.user_id)}
-        
-        <h6> Restaurant Type: {this.type(this.props.game.restaurant_id)} </h6>
- 
-      {/* {this.getUser()} */}
-
-        <h6> You Are: {this.state.user} </h6>
-        
-        <h6> Level {this.props.game.level} </h6>
-       
-        <h6> Money: ${this.props.game.money} </h6>
-
-      </div>
+      
+      <GameHeaderView game={this.props.game} username={this.props.user} restaurant={this.type} />
       
     )
   }
