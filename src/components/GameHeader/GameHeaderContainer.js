@@ -5,11 +5,8 @@ import GameHeaderView from './GameHeaderView';
 
 class GameHeaderContainer extends React.Component {
 
-  constructor() {
-    super()
-    this.state={ 
-      user:null
-    }
+  state={
+    user:null
   }
 
   //will return the type of the restaurant from the id
@@ -21,31 +18,22 @@ class GameHeaderContainer extends React.Component {
     } else if (num === 3) {
       return "Burgers"
     }
-  }
-
-  //will render the user playing this game
-  
-
-  //will update the game session in the database
-  updateSession = (gameId) => {
-    fetch( `http://localhost:3000/games/${gameId}`)
-    .then( resp => resp.json() )
-    .then()
-  }
+  }  
 
   render() {
     return (
-      
-      <GameHeaderView 
-        game={this.props.game} 
-        username={this.props.user} 
-        restaurant={this.type}
-        pancakes={this.props.pancakes}
-        cooked={this.props.cooked}
-        burnt={this.props.burnt}
-        raw={this.props.raw}
-        
-      />
+
+      <div>
+        <GameHeaderView 
+          game={this.props.game} 
+          username={this.props.user} 
+          restaurant={this.type}
+          pancakes={this.props.pancakes}
+          cooked={this.props.cooked}
+          burnt={this.props.burnt}
+          raw={this.props.raw}
+        />      
+      </div>
     )
   }
 }

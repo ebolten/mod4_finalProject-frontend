@@ -44,6 +44,22 @@ class PancakeContainer extends React.Component {
     });
 
     this.props.callback(pancakes, cooked, burnt, raw)
+
+    //this will decide what the score and money is updated with
+    let addByScore = 0
+    let addByMoney = 0
+
+    if(status === 'cooked') {
+      addByScore = 10;
+      addByMoney = 20;
+    } else if(status === 'burnt') {
+      addByScore = -10;
+      addByMoney = -15;
+    } else if(status === 'raw') {
+      addByScore = -10;
+      addByMoney = -5;
+    }
+    this.props.updateSession(addByScore,addByMoney)
   }
 
 

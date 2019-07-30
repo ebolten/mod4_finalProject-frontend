@@ -11,7 +11,7 @@ class GameScreenContainer extends React.Component {
     pancakes: [],
     cooked: 0,
     burnt: 0,
-    raw: 0
+    raw: 0,
   }
 
   //callback function to update state of game
@@ -20,20 +20,25 @@ class GameScreenContainer extends React.Component {
       pancakes: pancakes,
       cooked: cooked,
       burnt: burnt,
-      raw: raw,
-      score:this.props.score, //these are state because they will
-      level:this.props.level, //be updated
-      money:this.props.money
+      raw: raw
     })
   }
 
   //update the score, level and money based on user's progress
-  updateSession = () => {
+  updatedSession = (addScore,addMoney) => {
     if (this.props.game.id !== undefined) {
-      fetch(`http://localhost:3000/games/${this.props.game.id}`)
+      fetch(`http://localhost:3000/games/${this.props.game.id}`,{
+        method:'PATCH',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          level: Math.floor(this.props.game.score / 50),
+          score: this.props.game.score += addScore,
+          money: this.props.game.money += addMoney
+        })
+      })
       .then(resp => resp.json())
       .then(data => {
-        console.log(data)
+        //nothing needs to go here :)
       })
     }
   }
@@ -60,7 +65,7 @@ class GameScreenContainer extends React.Component {
           burnt={this.state.burnt}
           raw={this.state.raw}
         />
-        <PancakeContainer callback={this.callback} />
+        <PancakeContainer callback={this.callback} updateSession={this.updatedSession} />
       </div>
     )
   }
