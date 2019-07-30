@@ -17,6 +17,7 @@ class Pancake extends React.Component {
   componentDidMount() {
     this.startInterval()
   }
+
   componentWillUnmount() {
     clearInterval(this.interval);
   }
@@ -66,12 +67,12 @@ class Pancake extends React.Component {
     const status = this.getPancakeStatus();
 
     return (
-      <div className={`Pancake --${status}`}>
-        <div className="Pancake__content">
-          <div className="Pancake-front" onClick={this.flip}>
+      <div className={`pancake`}>
+        <div className="pancake__content">
+          <div className={`pancake-front --${status}`} onClick={this.flip}>
             {/* <h2>Front Side</h2> */}
           </div>
-          <div className="Pancake-back" onClick={this.removePancake}>
+          <div className={`pancake-back --${status}`} onClick={this.removePancake}>
             {/* <h2>Back Side</h2> */}
           </div>
         </div>

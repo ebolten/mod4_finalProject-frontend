@@ -49,19 +49,19 @@ class PancakeContainer extends React.Component {
     const pancake = (id) => burners[id].map((pancake) => <PancakeView key={id} burner={id} id={pancake} removePancake={this.removePancake} />)
 
     return (
-      <div className="Game">
-
-        <div className="GameHeader">
+      <div className="game">
+        
+        <div className="game__header">
           {/* <span>Pancake shop opened at: {time ? time.toString() : ''}</span> */}
-          <span>Pancakes Served: {cooked} of {pancakes.length}</span>
-          <div>
-            <div className="Game__score --cooked">Cooked: {cooked}</div>
-            <div className="Game__score --burnt">Burnt: {burnt}</div>
-            <div className="Game__score --raw">Raw: {raw}</div>
+          <div>Pancakes Served: {cooked} of {pancakes.length}</div>
+          <div className="game__score">
+            <div className="--cooked">Cooked: {cooked}</div>
+            <div className="--burnt">Burnt: {burnt}</div>
+            <div className="--raw">Raw: {raw}</div>
           </div>
         </div>
 
-        <div className="stoveTop">
+        <div className="stove">
           <div className="burners">
             {burners.map((burner, index) => {
               const id = index
