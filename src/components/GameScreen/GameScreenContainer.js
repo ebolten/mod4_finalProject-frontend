@@ -8,16 +8,9 @@ import PancakeContainer from '../Pancake'
 class GameScreenContainer extends React.Component {
   render() {
     return (
-<<<<<<< HEAD:src/components/Game/GameContainer.js
-      <div> 
-
-        <PlayHeader game={this.props.game} />
-
-=======
       <Fragment>
         {/* <GameHeader /> */}
         <GameHeader game={this.props.game} />
->>>>>>> fde4c2e71a67d99eb138184493388f9bc5cce2cb:src/components/GameScreen/GameScreenContainer.js
         <PancakeContainer/>
         {/* <GameView message={this.props.game.id} styles={styles} /> */}
       </div>

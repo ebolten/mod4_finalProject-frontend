@@ -51,13 +51,9 @@ class GameHeaderContainer extends React.Component {
         {this.getUser(this.props.game.user_id)}
         
         <h6> Restaurant Type: {this.type(this.props.game.restaurant_id)} </h6>
-<<<<<<< HEAD:src/components/PlayHeader/PlayContainer.js
-        
-=======
  
       {/* {this.getUser()} */}
 
->>>>>>> fde4c2e71a67d99eb138184493388f9bc5cce2cb:src/components/GameHeader/GameHeaderContainer.js
         <h6> You Are: {this.state.user} </h6>
         
         <h6> Level {this.props.game.level} </h6>
