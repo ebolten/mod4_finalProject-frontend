@@ -27,7 +27,8 @@ class Pancake extends React.Component {
     });
   };
 
-  flip = () => {
+  flip = (event) => {
+    event.target.parentElement.style.transform = "rotateX(180deg)"
     this.setState({
       flippedAt: this.state.timeCooked
     });
@@ -36,8 +37,8 @@ class Pancake extends React.Component {
   getPancakeStatus = () => {
     const { timeCooked, flippedAt } = this.state;
 
-    const cookedMin = 3
-    const cookDifficulty = 3 // lower number = more difficult
+    const cookedMin = 2
+    const cookDifficulty = 2 // lower number = more difficult
     const cookedMax = cookedMin + cookDifficulty
 
     // first side
@@ -53,34 +54,29 @@ class Pancake extends React.Component {
     return "raw";
   };
 
-  takeItOff = () => {
-    const { id } = this.props;
+  removePancake = () => {
+    const { id, burner } = this.props;
     let status = this.getPancakeStatus();
-    this.props.takeItOff(id, status);
+    this.props.removePancake(id, status, burner);
   };
 
   render() {
-    const { timeCooked, flippedAt } = this.state;
-    const firstSide = Boolean(this.state.flippedAt === undefined);
+    // const { timeCooked, flippedAt } = this.state;
+    // const firstSide = Boolean(this.state.flippedAt === undefined);
     const status = this.getPancakeStatus();
 
     return (
       <div className={`Pancake --${status}`}>
         <div className="Pancake__content">
-          <p>I am a pancake.</p>
-          <p>
-            Time cooked on {`${firstSide ? "first" : "second"}`} side:{" "}
-            {`${firstSide ? timeCooked : timeCooked - flippedAt}`}
-          </p>
-          <div>
-            {firstSide ? (
-              <button onClick={this.flip}>Flip me!</button>
-            ) : (
-              <button onClick={this.takeItOff}>Take me off!</button>
-            )}
+          <div className="Pancake-front" onClick={this.flip}>
+            {/* <h2>Front Side</h2> */}
+          </div>
+          <div className="Pancake-back" onClick={this.removePancake}>
+            {/* <h2>Back Side</h2> */}
           </div>
         </div>
       </div>
+
 
     );
   }
