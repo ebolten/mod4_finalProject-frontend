@@ -14,15 +14,31 @@ class GameScreenContainer extends React.Component {
     raw: 0
   }
 
+  //callback function to update state of game
   callback = (pancakes, cooked, burnt, raw) => {
     this.setState({
       pancakes: pancakes,
       cooked: cooked,
       burnt: burnt,
-      raw: raw
+      raw: raw,
+      score:this.props.score, //these are state because they will
+      level:this.props.level, //be updated
+      money:this.props.money
     })
   }
 
+  //update the score, level and money based on user's progress
+  updateSession = () => {
+    if (this.props.game.id !== undefined) {
+      fetch(`http://localhost:3000/games/${this.props.game.id}`)
+      .then(resp => resp.json())
+      .then(data => {
+        console.log(data)
+      })
+    }
+  }
+
+  //fetch the user playing
   componentDidMount() {
     fetch(`http://localhost:3000/users/1`)
     .then(resp => resp.json())
@@ -34,7 +50,6 @@ class GameScreenContainer extends React.Component {
   }
 
   render() {
-
     return (
       <div className="game">
         <GameHeader 

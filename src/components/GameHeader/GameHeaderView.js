@@ -10,10 +10,11 @@ function GameHeaderView(props) {
       {/* <span>Pancake shop opened at: {time ? time.toString() : ''}</span> */}
 
       <div className="game__header--scoreboard">
-        <span> Restaurant Type: {restaurant(game.restaurant_id)} </span>
-        <span> You Are: {username} </span>
-        <span> Level {game.level} </span>
-        <span> Money: ${game.money} </span>
+        <span> Restaurant Type: {restaurant(game.restaurant_id)} - </span>
+        <span> You Are: {username} - </span>
+        <span> Level {game.level} - </span>
+        <span> Money: ${game.money} - </span>
+        <span> Score: {game.score} - </span>
       </div>
 
       <div>Pancakes Served: {cooked} of {pancakes.length}</div>
