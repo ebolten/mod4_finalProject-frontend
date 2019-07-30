@@ -5,8 +5,8 @@ import { spring, AnimatedSwitch } from 'react-router-transition';
 import './styles/App.scss'
 
 import StartScreen from './components/StartScreen'
-import RestaurantChooser from './components/RestaurantChooser'
-import Game from './components/Game'
+import RestaurantScreen from './components/RestaurantScreen'
+import GameScreen from './components/GameScreen'
 
 class App extends Component {
 
@@ -58,12 +58,12 @@ class App extends Component {
 
                 {/* take user to choose restaurant page */}
                 <Route exact path="/game" render={() => {
-                  return <RestaurantChooser message={"Choose a Restaurant"} startGame={this.startGame} />
+                  return <RestaurantScreen message={"Choose a Restaurant"} startGame={this.startGame} />
                 }}/>
 
                 {/* take user to their game */}
                 <Route exact path={`/game/playing`} render={() => {
-                  return <Game game={this.state.game} />
+                  return <GameScreen game={this.state.game} />
                 }} />
 
               </AnimatedSwitch>
