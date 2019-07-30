@@ -9,10 +9,7 @@ class PancakeContainer extends React.Component {
     this.state = {
       //time: undefined,
       pancakes: [],
-      burners: {
-        1: [], 2: [], 3: [],
-        4: [], 5: [], 6: []
-      },
+      burners: [ [], [], [], [], [], [] ],
       cooked: 0,
       burnt: 0,
       raw: 0
@@ -28,35 +25,38 @@ class PancakeContainer extends React.Component {
   //   this.setState({ time: new Date(Date.now())});
   // }
 
-  addPancake = () => {
-    // Allow a maximum of 6 pancakes
-    if (this.state.pancakes.length < 6) {
-      this.setState({
-        pancakes: [...this.state.pancakes, Date.now()]
-      })
-    } 
-    else {
-      alert("There's no more room!")
-    }
-  }
+  // addPancake = () => {
+  //   // Allow a maximum of 6 pancakes
+  //   if (this.state.pancakes.length < 6) {
+  //     this.setState({
+  //       pancakes: [...this.state.pancakes, Date.now()]
+  //     })
+  //   } 
+  //   else {
+  //     alert("There's no more room!")
+  //   }
+  // }
 
   addPancakeToBurner = (event) => {
+    //event.stopPropagation()
     const id = event.target.dataset.id;
 
-    if (this.state.burners[id].length === 0) {
-      this.setState({
-        burners: {
-          ...this.state.burners, [id]: Date.now()
-        }
-      })
+    //if (this.state.burners[id].length === 0) {
+    if (this.state.burners[id]) {
+      const burners = [...this.state.burners]
+      burners[id] = [Date.now()]
+      this.setState({burners})
     }
   }
 
   takeItOff = (id, status) => {
-    const { pancakes, cooked, burnt, raw } = this.state;
+    const { pancakes, cooked, burnt, raw, burners } = this.state;
 
     this.setState({
       pancakes: pancakes.filter(pancake => !(pancake === id)),
+      // pancakes: pancakes.filter(function(pancake){
+      //  return !(pancake === id)
+      // })
       cooked: status === 'cooked' ? cooked + 1 : cooked,
       burnt: status === 'burnt' ? burnt + 1 : burnt,
       raw: status === 'raw' ? raw + 1 : raw
@@ -64,8 +64,9 @@ class PancakeContainer extends React.Component {
   }
 
   render() {
-    const { pancakes, burnt, cooked, raw, time } = this.state;
-    const pans = pancakes.map((pancake, index) => <PancakeView key={index} id={pancake} takeItOff={this.takeItOff} />);
+    const { pancakes, burnt, cooked, raw, time, burners } = this.state;
+    //const pans = pancakes.map((pancake, index) => <PancakeView key={index} id={pancake} takeItOff={this.takeItOff} />);
+    let newPa = (index) => burners[index].map((pancake, index) => <PancakeView key={index} id={pancake} takeItOff={this.takeItOff} />)
 
     return (
       <div className="Game">
@@ -82,14 +83,15 @@ class PancakeContainer extends React.Component {
 
         <div className="stoveTop">
           <div className="burners">
-            <div className="burner" data-id="1" onClick={this.addPancakeToBurner}></div>
-            <div className="burner" data-id="2" onClick={this.addPancakeToBurner}></div>
-            <div className="burner" data-id="3" onClick={this.addPancakeToBurner}></div>
-            <div className="burner" data-id="4" onClick={this.addPancakeToBurner}></div>
-            <div className="burner" data-id="5" onClick={this.addPancakeToBurner}></div>
-            <div className="burner" data-id="6" onClick={this.addPancakeToBurner}></div>
-
-            <div className="Game__pancakes">{pans}</div>
+            {burners.map((burner, index) => {
+              return (
+                <div className="burner" data-id={index} onClick={this.addPancakeToBurner}>
+                  {newPa(index)}
+                </div>
+              )
+            })}
+      
+            {/* <div className="Game__pancakes">{pans}</div> */}
           </div>
         </div>
       </div>

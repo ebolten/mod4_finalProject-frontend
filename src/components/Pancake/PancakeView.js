@@ -10,15 +10,14 @@ class Pancake extends React.Component {
     };
   }
   
-  // TODO: create a componentDidMount() which will start the interval to count how long the pancake has been cooking
+  startInterval = () => {
+    this.interval = setInterval(this.updateCounter, 1000);
+  };
+
   componentDidMount() {
     this.startInterval()
   }
-
-  // TODO: create a componentWillUnmount() which will clear the interval
   componentWillUnmount() {
-    //this.cleanUpInterval()
-
     clearInterval(this.interval);
   }
 
@@ -27,14 +26,6 @@ class Pancake extends React.Component {
       timeCooked: this.state.timeCooked + 1
     });
   };
-
-  startInterval = () => {
-    this.interval = setInterval(this.updateCounter, 1000);
-  };
-
-  // cleanUpInterval = () => {
-  //   clearInterval(this.interval);
-  // };
 
   flip = () => {
     this.setState({
@@ -45,16 +36,20 @@ class Pancake extends React.Component {
   getPancakeStatus = () => {
     const { timeCooked, flippedAt } = this.state;
 
+    const cookedMin = 3
+    const cookDifficulty = 3 // lower number = more difficult
+    const cookedMax = cookedMin + cookDifficulty
+
     // first side
     if (!flippedAt) {
-      if (timeCooked < 2) return "raw";
-      if (timeCooked >= 2 && timeCooked <= 6) return "cooked";
+      if (timeCooked < cookedMin) return "raw";
+      if (timeCooked >= cookedMin && timeCooked <= cookedMax) return "cooked";
       return "burnt";
     }
 
     //second side
-    if (flippedAt > 6 || timeCooked > 4) return "burnt";
-    if (timeCooked === 4 && flippedAt === 2) return "cooked";
+    if (flippedAt > cookedMax || timeCooked > (cookedMax * 2)) return "burnt";
+    if (timeCooked >= (cookedMin * 1.5) && flippedAt >= cookedMin) return "cooked";
     return "raw";
   };
 
@@ -86,6 +81,7 @@ class Pancake extends React.Component {
           </div>
         </div>
       </div>
+
     );
   }
 }
