@@ -8,7 +8,8 @@ class RestaurantChooserContainer extends React.Component {
 
   state = {
     restaurants: [],
-    restaurantChoice: null
+    restaurantChoice: null,
+    game:[]
   }
 
   componentDidMount() {
@@ -31,8 +32,11 @@ class RestaurantChooserContainer extends React.Component {
           user_id: 1, level: 1, score: 0,  money: 1
         })
       }).then(resp => resp.json())
-      .then(gameData => this.props.startGame(gameData))
-    } 
+      .then(gameData => {this.props.startGame(gameData)
+      this.setState({
+        game:gameData
+      })})
+    }
     else {
       alert("Please select a food to flip!")
       e.preventDefault()
@@ -57,7 +61,7 @@ class RestaurantChooserContainer extends React.Component {
               />
           )})}
         </div>
-        <Link to="/game/playing" onClick={this.createGame}>Start Your Game</Link>
+        <Link to="/game/playing"  onClick={this.createGame}>Start Your Game</Link>
       </Fragment>
     )
   }

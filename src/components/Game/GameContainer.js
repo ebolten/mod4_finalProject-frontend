@@ -10,7 +10,7 @@ class GameContainer extends React.Component {
     return (
       <Fragment>
         {/* <PlayHeader /> */}
-        <PlayHeader />
+        <PlayHeader game={this.props.game} />
         <PancakeContainer/>
         {/* <GameView message={this.props.game.id} styles={styles} /> */}
       </Fragment>
