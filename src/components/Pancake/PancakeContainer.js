@@ -41,9 +41,14 @@ class PancakeContainer extends React.Component {
       burnt: status === 'burnt' ? burnt + 1 : burnt,
       raw: status === 'raw' ? raw + 1 : raw,
       burners // clear used burner
-    });
+    }, () => {
+      const { pancakes, cooked, burnt, raw } = this.state;
+      this.props.countPancakes(
+        pancakes, cooked, burnt, raw
+      )
+    })
 
-    this.props.callback(pancakes, cooked, burnt, raw)
+    // , () => this.callback(pancakes, cooked, burnt, raw)
 
     //this will decide what the score and money is updated with
     let addByScore = 0
