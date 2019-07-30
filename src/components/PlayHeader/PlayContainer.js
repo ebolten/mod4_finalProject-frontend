@@ -34,6 +34,8 @@ class PlayContainer extends React.Component {
           game:this.props.game
         })
       })
+    } else {
+      //do nothing
     }
   }
 

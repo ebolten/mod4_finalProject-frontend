@@ -11,7 +11,8 @@ import Game from './components/Game'
 class App extends Component {
 
   state = {
-    game: {}
+    game: {},
+    user:null
   }
 
   startGame = (gameData) => {
