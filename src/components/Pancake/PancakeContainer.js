@@ -20,7 +20,10 @@ class PancakeContainer extends React.Component {
   //   this.setState({ time: new Date(Date.now())});
   // }
 
-  addPancake = (event) => {
+
+
+  //add a new pancake to the burner
+  addPancakeToBurner = (event) => {
     const id = event.target.dataset.id;
 
     if (this.state.burners[id]) {
