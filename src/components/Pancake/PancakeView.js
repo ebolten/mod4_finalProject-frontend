@@ -10,15 +10,15 @@ class Pancake extends React.Component {
     };
   }
   
-  // TODO: create a componentDidMount() which will start the interval to count how long the pancake has been cooking
+  startInterval = () => {
+    this.interval = setInterval(this.updateCounter, 1000);
+  };
+
   componentDidMount() {
     this.startInterval()
   }
 
-  // TODO: create a componentWillUnmount() which will clear the interval
   componentWillUnmount() {
-    //this.cleanUpInterval()
-
     clearInterval(this.interval);
   }
 
@@ -28,15 +28,8 @@ class Pancake extends React.Component {
     });
   };
 
-  startInterval = () => {
-    this.interval = setInterval(this.updateCounter, 1000);
-  };
-
-  // cleanUpInterval = () => {
-  //   clearInterval(this.interval);
-  // };
-
-  flip = () => {
+  flip = (event) => {
+    event.target.parentElement.style.transform = "rotateX(540deg)"
     this.setState({
       flippedAt: this.state.timeCooked
     });
@@ -45,47 +38,47 @@ class Pancake extends React.Component {
   getPancakeStatus = () => {
     const { timeCooked, flippedAt } = this.state;
 
+    const cookedMin = 2
+    const cookDifficulty = 2 // lower number = more difficult
+    const cookedMax = cookedMin + cookDifficulty
+
     // first side
     if (!flippedAt) {
-      if (timeCooked < 2) return "raw";
-      if (timeCooked >= 2 && timeCooked <= 6) return "cooked";
+      if (timeCooked < cookedMin) return "raw";
+      if (timeCooked >= cookedMin && timeCooked <= cookedMax) return "cooked";
       return "burnt";
     }
 
     //second side
-    if (flippedAt > 6 || timeCooked > 4) return "burnt";
-    if (timeCooked === 4 && flippedAt === 2) return "cooked";
+    if (flippedAt > cookedMax || timeCooked > (cookedMax * 2)) return "burnt";
+    if (timeCooked >= (cookedMin * 1.5) && flippedAt >= cookedMin) return "cooked";
     return "raw";
   };
 
-  takeItOff = () => {
-    const { id } = this.props;
+  removePancake = () => {
+    const { id, burner } = this.props;
     let status = this.getPancakeStatus();
-    this.props.takeItOff(id, status);
+    this.props.removePancake(id, status, burner);
   };
 
   render() {
-    const { timeCooked, flippedAt } = this.state;
-    const firstSide = Boolean(this.state.flippedAt === undefined);
+    // const { timeCooked, flippedAt } = this.state;
+    // const firstSide = Boolean(this.state.flippedAt === undefined);
     const status = this.getPancakeStatus();
 
     return (
-      <div className={`Pancake --${status}`}>
-        <div className="Pancake__content">
-          <p>I am a pancake.</p>
-          <p>
-            Time cooked on {`${firstSide ? "first" : "second"}`} side:{" "}
-            {`${firstSide ? timeCooked : timeCooked - flippedAt}`}
-          </p>
-          <div>
-            {firstSide ? (
-              <button onClick={this.flip}>Flip me!</button>
-            ) : (
-              <button onClick={this.takeItOff}>Take me off!</button>
-            )}
+      <div className={`pancake`}>
+        <div className="pancake__content">
+          <div className={`pancake-front --${status}`} onClick={this.flip}>
+            {/* <h2>Front Side</h2> */}
+          </div>
+          <div className={`pancake-back --${status}`} onClick={this.removePancake}>
+            {/* <h2>Back Side</h2> */}
           </div>
         </div>
       </div>
+
+
     );
   }
 }

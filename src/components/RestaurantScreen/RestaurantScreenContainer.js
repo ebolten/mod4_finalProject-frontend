@@ -1,14 +1,15 @@
 // component-name-container.js is your business logic and state management as handled before being sent to the stateless view RestaurantChooser.
 import React, {Fragment} from 'react';
-import styles from './RestaurantChooser.module.scss';
-import RestaurantChooserView from './RestaurantChooserView';
+//import styles from './RestaurantScreen.module.scss';
+import RestaurantScreenView from './RestaurantScreenView';
 import { Link } from 'react-router-dom'
 
-class RestaurantChooserContainer extends React.Component {
+class RestaurantScreenContainer extends React.Component {
 
   state = {
     restaurants: [],
-    restaurantChoice: null
+    restaurantChoice: null,
+    game:[]
   }
 
   componentDidMount() {
@@ -20,6 +21,7 @@ class RestaurantChooserContainer extends React.Component {
     this.setState({restaurantChoice: id})
   }
 
+  //create a new game session
   createGame = (e) => {
     if (this.state.restaurantChoice !== null) {
       fetch('http://localhost:3000/games', {
@@ -30,8 +32,11 @@ class RestaurantChooserContainer extends React.Component {
           user_id: 1, level: 1, score: 0,  money: 1
         })
       }).then(resp => resp.json())
-      .then(gameData => this.props.startGame(gameData))
-    } 
+      .then(gameData => {this.props.startGame(gameData)
+      this.setState({
+        game:gameData
+      })})
+    }
     else {
       alert("Please select a food to flip!")
       e.preventDefault()
@@ -48,7 +53,7 @@ class RestaurantChooserContainer extends React.Component {
         <div className="restaurant-list">
           {this.state.restaurants.map(restaurant => {
             return (
-              <RestaurantChooserView 
+              <RestaurantScreenView 
                 key={restaurant.id} 
                 restaurant={restaurant}
                 active={this.state.restaurantChoice === restaurant.id}
@@ -56,10 +61,10 @@ class RestaurantChooserContainer extends React.Component {
               />
           )})}
         </div>
-        <Link to="/game/playing" onClick={this.createGame}>Start Your Game</Link>
+        <Link to="/game/playing"  onClick={this.createGame}>Start Your Game</Link>
       </Fragment>
     )
   }
 }
 
-export default RestaurantChooserContainer
+export default RestaurantScreenContainer

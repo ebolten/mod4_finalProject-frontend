@@ -3,23 +3,15 @@ import PancakeView from './PancakeView';
 
 class PancakeContainer extends React.Component {
 
-  constructor(props) {
-    super(props);
+  state = {
+    time: undefined,
+    pancakes: [],
+    burners: [ [], [], [], [], [], [] ],
+    cooked: 0,
+    burnt: 0,
+    raw: 0
+  };
 
-    this.state = {
-      //time: undefined,
-      pancakes: [],
-      burners: {
-        1: [], 2: [], 3: [],
-        4: [], 5: [], 6: []
-      },
-      cooked: 0,
-      burnt: 0,
-      raw: 0
-    };
-  }
-
-  // TODO: create a componentDidMount() which will set the current time
   // componentDidMount() {
   //   this.setCurrentTime()
   // }
@@ -28,68 +20,57 @@ class PancakeContainer extends React.Component {
   //   this.setState({ time: new Date(Date.now())});
   // }
 
-  addPancake = () => {
-    // Allow a maximum of 6 pancakes
-    if (this.state.pancakes.length < 6) {
-      this.setState({
-        pancakes: [...this.state.pancakes, Date.now()]
-      })
-    } 
-    else {
-      alert("There's no more room!")
-    }
-  }
-
-  addPancakeToBurner = (event) => {
+  addPancake = (event) => {
     const id = event.target.dataset.id;
 
-    if (this.state.burners[id].length === 0) {
-      this.setState({
-        burners: {
-          ...this.state.burners, [id]: Date.now()
-        }
-      })
+    if (this.state.burners[id]) {
+      const burners = [...this.state.burners]
+      burners[id] = [Date.now()]
+      this.setState({burners})
     }
   }
 
-  takeItOff = (id, status) => {
-    const { pancakes, cooked, burnt, raw } = this.state;
+  removePancake = (id, status, burner) => {
+    const { burners, pancakes, cooked, burnt, raw } = this.state;
+
+    burners[burner] = []
 
     this.setState({
-      pancakes: pancakes.filter(pancake => !(pancake === id)),
+      pancakes: [...pancakes, id],
       cooked: status === 'cooked' ? cooked + 1 : cooked,
       burnt: status === 'burnt' ? burnt + 1 : burnt,
-      raw: status === 'raw' ? raw + 1 : raw
+      raw: status === 'raw' ? raw + 1 : raw,
+      burners // clear used burner
     });
   }
 
   render() {
-    const { pancakes, burnt, cooked, raw, time } = this.state;
-    const pans = pancakes.map((pancake, index) => <PancakeView key={index} id={pancake} takeItOff={this.takeItOff} />);
+    const { pancakes, burnt, cooked, raw, time, burners } = this.state;
+    const pancake = (id) => burners[id].map((pancake) => <PancakeView key={id} burner={id} id={pancake} removePancake={this.removePancake} />)
 
     return (
-      <div className="Game">
-
-        <div className="GameHeader">
-          <span>Pancake shop opened at: {time ? time.toString() : ''}</span>
-          <div>
-            <div className="Game__score --cooked">Cooked: {cooked}</div>
-            <div className="Game__score --burnt">Burnt: {burnt}</div>
-            <div className="Game__score --raw">Raw: {raw}</div>
+      <div className="game">
+        
+        <div className="game__header">
+          {/* <span>Pancake shop opened at: {time ? time.toString() : ''}</span> */}
+          <div>Pancakes Served: {cooked} of {pancakes.length}</div>
+          <div className="game__score">
+            <div className="--cooked">Cooked: {cooked}</div>
+            <div className="--burnt">Burnt: {burnt}</div>
+            <div className="--raw">Raw: {raw}</div>
           </div>
-          <button onClick={this.addPancake} className="Game__button">New pancake!</button>
         </div>
 
-        <div className="stoveTop">
+        <div className="stove">
           <div className="burners">
-            <div className="burner" data-id="1" onClick={this.addPancakeToBurner}></div>
-            <div className="burner" data-id="2" onClick={this.addPancakeToBurner}></div>
-            <div className="burner" data-id="3" onClick={this.addPancakeToBurner}></div>
-            <div className="burner" data-id="4" onClick={this.addPancakeToBurner}></div>
-            <div className="burner" data-id="5" onClick={this.addPancakeToBurner}></div>
-            <div className="burner" data-id="6" onClick={this.addPancakeToBurner}></div>
-
-            <div className="Game__pancakes">{pans}</div>
+            {burners.map((burner, index) => {
+              const id = index
+              return (
+                <div className="burner" data-id={id} onClick={this.addPancake}>
+                  {pancake(id)}
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>
