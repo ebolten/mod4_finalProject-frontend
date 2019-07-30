@@ -12,7 +12,7 @@ class GameScreenContainer extends React.Component {
         <GameHeader game={this.props.game} />
         <PancakeContainer/>
         {/* <GameView message={this.props.game.id} styles={styles} /> */}
-      </div>
+      </Fragment>
     )
   }
 }
