@@ -31,11 +31,16 @@ button {
   }
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 /* App
 /------------------------------------*/
 .game-container {
   border: 5px solid black;
   overflow: hidden;
+  max-height: 100vh;
 
   &::before {
     content: "";
@@ -117,18 +122,33 @@ button {
     width: 100%;
     border-bottom: 5px solid;
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row wrap;
+    align-items: center;
     justify-content: space-between;
-  }
+    font-size: 1.7vw;
 
-  &__score {
-    display: flex;
-    justify-content: space-evenly;
-
-    > div {
+    &--score {
       flex: 1;
+      display: flex;
+      justify-content: space-evenly;
+
+      > span {padding: 0 0.35em;}
+    }
+
+
+    &--count {
+      flex: 0.3;
+      display: flex;
+      justify-content: space-evenly;
+      
+      > div { 
+        flex: 1; 
+        padding: 0.25em 0;
+      }
     }
   }
+
+  
 }
 
 
@@ -197,6 +217,7 @@ button {
     height: 100%;
     backface-visibility: hidden;
     border-radius: 50%;
+    transform: scale(1);
   }
 
   &-back {

@@ -1,6 +1,5 @@
 // component-name-container.js is your business logic and state management as handled before being sent to the stateless view Game.
-import React from 'react';
-// import styles from './Game.module.scss';
+import React, {Fragment} from 'react';
 import GameHeaderView from './GameHeaderView';
 
 class GameHeaderContainer extends React.Component {
@@ -23,7 +22,7 @@ class GameHeaderContainer extends React.Component {
   render() {
     return (
 
-      <div>
+      <Fragment>
         <GameHeaderView 
           game={this.props.game} 
           username={this.props.user} 
@@ -33,7 +32,7 @@ class GameHeaderContainer extends React.Component {
           burnt={this.props.burnt}
           raw={this.props.raw}
         />      
-      </div>
+      </Fragment>
     )
   }
 }
