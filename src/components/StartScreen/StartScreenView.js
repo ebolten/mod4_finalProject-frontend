@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 function StartScreenView(props) {
-  const {message, styles} = props
+  const {message} = props
 
   return (
     <React.Fragment>

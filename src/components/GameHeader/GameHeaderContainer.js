@@ -36,8 +36,16 @@ class GameHeaderContainer extends React.Component {
   render() {
     return (
       
-      <GameHeaderView game={this.props.game} username={this.props.user} restaurant={this.type} />
-      
+      <GameHeaderView 
+        game={this.props.game} 
+        username={this.props.user} 
+        restaurant={this.type}
+        pancakes={this.props.pancakes}
+        cooked={this.props.cooked}
+        burnt={this.props.burnt}
+        raw={this.props.raw}
+        
+      />
     )
   }
 }

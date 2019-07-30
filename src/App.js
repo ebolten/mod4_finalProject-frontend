@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import { Route, withRouter, Link } from 'react-router-dom'
+import { Route, withRouter} from 'react-router-dom'
 import { spring, AnimatedSwitch } from 'react-router-transition';
 
 import './styles/App.scss'
