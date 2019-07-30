@@ -136,9 +136,15 @@ button {
   flex: 1;
   display: flex;
   align-items: center;
-  width: 70%;
+  padding: 0 15%;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: space-between;
+  background-color: rgb(69,72,77);
+  background: rgb(69,72,77);
+  background: -moz-linear-gradient(-45deg,  rgb(69,72,77) 0%, rgb(0,0,0) 100%);
+  background: -webkit-linear-gradient(-45deg,  rgb(69,72,77) 0%,rgb(0,0,0) 100%);
+  background: linear-gradient(135deg,  rgb(69,72,77) 0%,rgb(0,0,0) 100%);
 
   .burners {
     display: flex;
