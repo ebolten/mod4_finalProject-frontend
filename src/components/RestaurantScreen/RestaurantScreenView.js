@@ -1,7 +1,7 @@
 // component-name-view.js is your stateless view RestaurantChooser. For the majority of cases, this RestaurantChooser should be able to be pure functional RestaurantChooser (no hooks!).
 import React from 'react';
 
-function RestaurantChooserView(props)  {
+function RestaurantScreenView(props)  {
 
     const {restaurant, setRestaurant, active} = props
 
@@ -12,4 +12,4 @@ function RestaurantChooserView(props)  {
       </div>
     )
 }
-export default RestaurantChooserView
+export default RestaurantScreenView

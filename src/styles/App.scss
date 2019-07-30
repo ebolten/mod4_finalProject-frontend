@@ -136,9 +136,15 @@ button {
   flex: 1;
   display: flex;
   align-items: center;
-  width: 70%;
+  padding: 0 15%;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: space-between;
+  background-color: rgb(69,72,77);
+  background: rgb(69,72,77);
+  background: -moz-linear-gradient(-45deg,  rgb(69,72,77) 0%, rgb(0,0,0) 100%);
+  background: -webkit-linear-gradient(-45deg,  rgb(69,72,77) 0%,rgb(0,0,0) 100%);
+  background: linear-gradient(135deg,  rgb(69,72,77) 0%,rgb(0,0,0) 100%);
 
   .burners {
     display: flex;
@@ -155,24 +161,31 @@ button {
     border-radius: 50%;
     background: none;
     box-shadow: 0px 0px 2px rgb(100, 74, 74) inset;
+    background: url('../assets/images/burner_red.png') darkslategrey no-repeat center center;
+    background-size: 90%;
+    background-blend-mode: luminosity;
+    transition: all .2s linear;
 
     &:hover {
       cursor: pointer;
+      background-blend-mode: normal;
       //cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/happy.png"), auto;
       //cursor: url("https://i.ibb.co/JCQ11Gs/cursor-pourer.png"), auto;
     }
   }
 }
 
-
 .pancake {
   width: 100%;
   position: absolute;
   top: 0; left: 0;
   padding-top: 100%;
-
+  box-shadow: 0 0 0 5px black;
+  border-radius: 50%;
+  background: url('../assets/images/burner_pan.png') black no-repeat center center;
+  background-size: cover;
   // Flip
-  background-color: transparent;
+  //background-color: transparent;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 
   &-front, &-back {
@@ -187,7 +200,7 @@ button {
   }
 
   &-back {
-    transform: rotateX(180deg);
+    transform: rotateX(540deg);
   }
 
   &__content {
