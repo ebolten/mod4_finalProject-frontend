@@ -1,9 +1,9 @@
 // component-name-container.js is your business logic and state management as handled before being sent to the stateless view Game.
 import React from 'react';
 // import styles from './Game.module.scss';
-import PlayView from './PlayView';
+import GameHeaderView from './GameHeaderView';
 
-class PlayContainer extends React.Component {
+class GameHeaderContainer extends React.Component {
 
   constructor() {
     super()
@@ -51,7 +51,7 @@ class PlayContainer extends React.Component {
 
         <h6> Restaurant Type: {this.type(this.props.game.restaurant_id)} </h6>
  
-        {this.getUser()}
+      {/* {this.getUser()} */}
 
         <h6> You Are: {this.state.user} </h6>
             
@@ -64,4 +64,4 @@ class PlayContainer extends React.Component {
   }
 }
 
-export default PlayContainer
+export default GameHeaderContainer

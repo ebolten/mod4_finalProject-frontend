@@ -1,16 +1,16 @@
 // component-name-container.js is your business logic and state management as handled before being sent to the stateless view Game.
 import React, {Fragment} from 'react';
 // import styles from './Game.module.scss';
-import PlayHeader from '../PlayHeader'
+import GameHeader from '../GameHeader'
 import PancakeContainer from '../Pancake'
 // import GameView from './GameView';
 
-class GameContainer extends React.Component {
+class GameScreenContainer extends React.Component {
   render() {
     return (
       <Fragment>
-        {/* <PlayHeader /> */}
-        <PlayHeader game={this.props.game} />
+        {/* <GameHeader /> */}
+        <GameHeader game={this.props.game} />
         <PancakeContainer/>
         {/* <GameView message={this.props.game.id} styles={styles} /> */}
       </Fragment>
@@ -18,6 +18,6 @@ class GameContainer extends React.Component {
   }
 }
 
-export default GameContainer
+export default GameScreenContainer
 
 
