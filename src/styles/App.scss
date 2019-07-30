@@ -1,41 +1,5 @@
 @import './variables.scss';
 
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: $primary-color;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: $secondary-color;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-// ------------------
-
 html {
   box-sizing: border-box;
 }
@@ -103,7 +67,6 @@ button {
     // https://matthewlein.com/tools/ceaser
     transition: all 600ms cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
     transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
-  
   }
 }
 
@@ -144,39 +107,32 @@ button {
 
 /* Pancake
 /------------------------------------*/
-
-.circle {
-  $plateWidth: 30%;
-  width: $plateWidth;
-  padding-top: $plateWidth;
-  margin: 2% 0;
-  border-radius: 50%;
-}
-
-.Game {
+.game {
   height: 100%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
 
-  &__score {
-    display: inline-block;
-    text-align: center;
-    width: 33.3%;
+  &__header {
+    width: 100%;
+    border-bottom: 5px solid;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
   }
 
-  &__pancakes {
+  &__score {
     display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    position: absolute;
+    justify-content: space-evenly;
+
+    > div {
+      flex: 1;
+    }
   }
 }
 
 
-
-.stoveTop {
+.stove {
   flex: 1;
   display: flex;
   align-items: center;
@@ -192,45 +148,60 @@ button {
   }
 
   .burner {
-    @extend .circle;
+    $plateWidth: 30%;
+    width: $plateWidth;
+    padding-top: $plateWidth;
+    margin: 2% 0;
+    border-radius: 50%;
     background: none;
-    box-shadow: 0px 0px 2px#000 inset;
+    box-shadow: 0px 0px 2px rgb(100, 74, 74) inset;
+
+    &:hover {
+      cursor: pointer;
+      //cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/happy.png"), auto;
+      //cursor: url("https://i.ibb.co/JCQ11Gs/cursor-pourer.png"), auto;
+    }
   }
 }
 
-.GameHeader {
-  height: 50px;
+
+.pancake {
   width: 100%;
-  border-bottom: 5px solid;
-}
+  position: absolute;
+  top: 0; left: 0;
+  padding-top: 100%;
 
+  // Flip
+  background-color: transparent;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
 
+  &-front, &-back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 50%;
+  }
 
-.Pancake {
-  @extend .circle;
-  background-color: #F0E68C;
+  &-back {
+    transform: rotateX(180deg);
+  }
 
   &__content {
     position: absolute;
     height: 100%;
     width: 100%;
     top: 0; left: 0;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
+
+    // Flip
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
   }
 }
 
-.--cooked {
-  background-color: #846644;
-  color: white;
-}
-
-.--burnt {
-  background-color: #46381B;
-  color: white;
-}
-
-.--raw {
-  background-color: #F0E68C;
-}
+.--cooked { background-color: #846644; color: white; }
+.--burnt { background-color: #46381B; color: white; }
+.--raw { background-color: #F0E68C; }
