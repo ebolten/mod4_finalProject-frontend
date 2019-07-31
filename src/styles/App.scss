@@ -18,9 +18,7 @@ h1 {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: 'Righteous', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -41,6 +39,9 @@ button {
   border: 5px solid black;
   overflow: hidden;
   max-height: 100vh;
+  background: url(../assets/images/pancake_pattern.jpg) repeat center center;
+  background-blend-mode: color-burn;
+  background-size:25%;
 
   &::before {
     content: "";
@@ -62,6 +63,7 @@ button {
 /------------------------------------*/
 .route-switcher {
   height: 100%;
+  background: rgba(255,255,255,0.5);
   
   > div {
     display: flex;
@@ -126,6 +128,7 @@ button {
     // align-items: center;
     // justify-content: space-between;
     font-size: 1.7vw;
+    transition: 1s all linear;
 
     &--score {
       flex: 1;
@@ -254,34 +257,43 @@ button {
 
 .Pancakes {
   .--cooked { 
-    background-color: #846644; 
-    color: white; 
+    // background: rgb(132,102,68);
+    // background: -moz-radial-gradient(center, ellipse cover,  rgba(132,102,68,1) 0%, rgba(132,102,68,1) 40%, rgba(183,173,112,1) 100%);
+    // background: -webkit-radial-gradient(center, ellipse cover,  rgba(132,102,68,1) 0%,rgba(132,102,68,1) 40%,rgba(183,173,112,1) 100%);
+    background: radial-gradient(ellipse at center,  rgba(132,102,68,1) 0%,rgba(132,102,68,1) 40%,rgba(183,173,112,1) 100%);
   }
   .--burnt { 
-    background-color: #46381B; 
-    color: white; 
+    // background: rgb(70,56,27);
+    // background: -moz-radial-gradient(center, ellipse cover,  rgba(70,56,27,1) 0%, rgba(70,56,27,1) 40%, rgba(183,173,112,1) 100%);
+    // background: -webkit-radial-gradient(center, ellipse cover,  rgba(70,56,27,1) 0%,rgba(70,56,27,1) 40%,rgba(183,173,112,1) 100%);
+    background: radial-gradient(ellipse at center,  rgba(70,56,27,1) 0%,rgba(70,56,27,1) 40%,rgb(100, 80, 39) 100%);
+
   }
   .--raw { 
-    background-color: #F0E68C; 
+    // background: rgb(240,230,140);
+    // background: -moz-radial-gradient(center, ellipse cover,  rgba(240,230,140,1) 0%, rgba(240,230,140,1) 40%, rgba(239,236,208,1) 100%);
+    // background: -webkit-radial-gradient(center, ellipse cover,  rgba(240,230,140,1) 0%,rgba(240,230,140,1) 40%,rgba(239,236,208,1) 100%);
+    background: radial-gradient(ellipse at center,  rgba(240,230,140,1) 0%,rgba(240,230,140,1) 40%,rgba(239,236,208,1) 100%);
+
   }
 }
 .Eggs {
   .--cooked { 
-    background: rgb(234,191,0);
-    background: -moz-radial-gradient(center, ellipse cover,  rgba(234,191,0,1) 25%, rgba(255,255,255,1) 30%, rgba(206,204,192,1) 100%);
-    background: -webkit-radial-gradient(center, ellipse cover,  rgba(234,191,0,1) 25%,rgba(255,255,255,1) 30%,rgba(206,204,192,1) 100%);
+    // background: rgb(234,191,0);
+    // background: -moz-radial-gradient(center, ellipse cover,  rgba(234,191,0,1) 25%, rgba(255,255,255,1) 30%, rgba(206,204,192,1) 100%);
+    // background: -webkit-radial-gradient(center, ellipse cover,  rgba(234,191,0,1) 25%,rgba(255,255,255,1) 30%,rgba(206,204,192,1) 100%);
     background: radial-gradient(ellipse at center,  rgba(234,191,0,1) 25%,rgba(255,255,255,1) 30%,rgba(206,204,192,1) 100%);
   }
   .--burnt { 
-    background: rgb(142,119,0);
-    background: -moz-radial-gradient(center, ellipse cover,  rgba(142,119,0,1) 25%, rgba(255,255,255,1) 30%, rgba(94,81,67,1) 88%, rgba(94,81,67,1) 100%);
-    background: -webkit-radial-gradient(center, ellipse cover,  rgba(142,119,0,1) 25%,rgba(255,255,255,1) 30%,rgba(94,81,67,1) 88%,rgba(94,81,67,1) 100%);
+    // background: rgb(142,119,0);
+    // background: -moz-radial-gradient(center, ellipse cover,  rgba(142,119,0,1) 25%, rgba(255,255,255,1) 30%, rgba(94,81,67,1) 88%, rgba(94,81,67,1) 100%);
+    // background: -webkit-radial-gradient(center, ellipse cover,  rgba(142,119,0,1) 25%,rgba(255,255,255,1) 30%,rgba(94,81,67,1) 88%,rgba(94,81,67,1) 100%);
     background: radial-gradient(ellipse at center,  rgba(142,119,0,1) 25%,rgba(255,255,255,1) 30%,rgba(94,81,67,1) 88%,rgba(94,81,67,1) 100%);
   }
   .--raw { 
-    background: rgb(239,223,115);
-    background: -moz-radial-gradient(center, ellipse cover,  rgba(237,227,168,1) 25%, rgba(255,255,255,1) 30%, rgba(255,255,255,1) 57%, rgba(254,252,234,1) 100%);
-    background: -webkit-radial-gradient(center, ellipse cover,  rgba(237,227,168,1) 25%,rgba(255,255,255,1) 30%,rgba(255,255,255,1) 57%,rgba(254,252,234,1) 100%);
+    // background: rgb(239,223,115);
+    // background: -moz-radial-gradient(center, ellipse cover,  rgba(237,227,168,1) 25%, rgba(255,255,255,1) 30%, rgba(255,255,255,1) 57%, rgba(254,252,234,1) 100%);
+    // background: -webkit-radial-gradient(center, ellipse cover,  rgba(237,227,168,1) 25%,rgba(255,255,255,1) 30%,rgba(255,255,255,1) 57%,rgba(254,252,234,1) 100%);
     background: radial-gradient(ellipse at center,  rgba(237,227,168,1) 25%,rgba(255,255,255,1) 30%,rgba(255,255,255,1) 57%,rgba(254,252,234,1) 100%);
 
   }
@@ -299,7 +311,7 @@ button {
     color: white; 
   }
   .--burnt { 
-    background-color: #46381B; 
+    background-color: rgb(29, 23, 11); 
     color: white; 
   }
   .--raw { 
