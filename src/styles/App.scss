@@ -166,6 +166,19 @@ button {
   background: -webkit-linear-gradient(-45deg,  rgb(69,72,77) 0%,rgb(0,0,0) 100%);
   background: linear-gradient(135deg,  rgb(69,72,77) 0%,rgb(0,0,0) 100%);
 
+  &.Burgers {
+    background: url('../assets/images/grill.jpg') rgb(36, 33, 33) no-repeat center center;
+    background-blend-mode: color-burn;
+
+    .burner {
+      background: none;
+    }
+    .pan {
+      background: none;
+      box-shadow: 0 0 0 2px black;
+    }
+  }
+
   .burners {
     display: flex;
     width: 100%;
@@ -195,7 +208,7 @@ button {
   }
 }
 
-.pancake {
+.pan {
   width: 100%;
   position: absolute;
   top: 0; left: 0;
@@ -236,6 +249,69 @@ button {
   }
 }
 
-.--cooked { background-color: #846644; color: white; }
-.--burnt { background-color: #46381B; color: white; }
-.--raw { background-color: #F0E68C; }
+.Pancakes {
+  .--cooked { 
+    background-color: #846644; 
+    color: white; 
+  }
+  .--burnt { 
+    background-color: #46381B; 
+    color: white; 
+  }
+  .--raw { 
+    background-color: #F0E68C; 
+  }
+}
+.Eggs {
+  .--cooked { 
+    background: rgb(234,191,0);
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(234,191,0,1) 25%, rgba(255,255,255,1) 30%, rgba(206,204,192,1) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(234,191,0,1) 25%,rgba(255,255,255,1) 30%,rgba(206,204,192,1) 100%);
+    background: radial-gradient(ellipse at center,  rgba(234,191,0,1) 25%,rgba(255,255,255,1) 30%,rgba(206,204,192,1) 100%);
+  }
+  .--burnt { 
+    background: rgb(142,119,0);
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(142,119,0,1) 25%, rgba(255,255,255,1) 30%, rgba(94,81,67,1) 88%, rgba(94,81,67,1) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(142,119,0,1) 25%,rgba(255,255,255,1) 30%,rgba(94,81,67,1) 88%,rgba(94,81,67,1) 100%);
+    background: radial-gradient(ellipse at center,  rgba(142,119,0,1) 25%,rgba(255,255,255,1) 30%,rgba(94,81,67,1) 88%,rgba(94,81,67,1) 100%);
+  }
+  .--raw { 
+    background: rgb(239,223,115);
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(237,227,168,1) 25%, rgba(255,255,255,1) 30%, rgba(255,255,255,1) 57%, rgba(254,252,234,1) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(237,227,168,1) 25%,rgba(255,255,255,1) 30%,rgba(255,255,255,1) 57%,rgba(254,252,234,1) 100%);
+    background: radial-gradient(ellipse at center,  rgba(237,227,168,1) 25%,rgba(255,255,255,1) 30%,rgba(255,255,255,1) 57%,rgba(254,252,234,1) 100%);
+
+  }
+}
+.Burgers {
+  .--cooked, .--burnt, .--raw {
+    background-image: url('../assets/images/burger_lines.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-blend-mode: multiply;
+  }
+  .--cooked { 
+    background-color: #846644; 
+    color: white; 
+  }
+  .--burnt { 
+    background-color: #46381B; 
+    color: white; 
+  }
+  .--raw { 
+    background-color: rgb(240, 155, 140); 
+  }
+}
+
+.--cooked { 
+  background-color: #846644; 
+  color: white; 
+}
+.--burnt { 
+  background-color: #46381B; 
+  color: white; 
+}
+.--raw { 
+  background-color: #F0E68C; 
+}

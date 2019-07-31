@@ -43,6 +43,17 @@ class GameScreenContainer extends React.Component {
     }
   }
 
+   //will return the type of the restaurant from the id
+   type = (num) => {
+    if (num === 1) {
+      return "Pancakes"
+    } else if (num === 2) {
+      return "Eggs"
+    } else if (num === 3) {
+      return "Burgers"
+    }
+  }  
+
   //fetch the user playing
   componentDidMount() {
     fetch(`http://localhost:3000/users/1`)
@@ -64,8 +75,14 @@ class GameScreenContainer extends React.Component {
           cooked={this.state.cooked}
           burnt={this.state.burnt}
           raw={this.state.raw}
+          restaurant={this.type}
         />
-        <PancakeContainer countPancakes={this.countPancakes} updateSession={this.updatedSession} />
+        <PancakeContainer 
+          countPancakes={this.countPancakes} 
+          updateSession={this.updatedSession} 
+          game={this.props.game} 
+          restaurant={this.type}
+        />
       </div>
     )
   }

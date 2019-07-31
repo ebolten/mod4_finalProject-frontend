@@ -3,6 +3,11 @@ import React from 'react';
 
 function GameHeaderView(props) {
   const {game, username, restaurant, pancakes, cooked, burnt, raw} = props
+  
+  // TODO: All of these are causing errors and I don't know why
+    // const foods = restaurant(game.restaurant_id) // for plural use
+    // const food = foods.substring(0, foods.length -1) // for singular use
+    // const building = ["House", "Shack", "Jaunt", "Cabana", "Emporium", "Buffet"].random()
 
   return (
     <div className="game__header">
@@ -20,7 +25,7 @@ function GameHeaderView(props) {
         <span>{username}'s <span className="nowrap">House of {restaurant(game.restaurant_id) || "Pancakes"}</span></span>
         <span> Earnings: <span className="nowrap">${props.game.money || "0.00"}</span></span>
         <span> Score: {props.game.score || 0}</span>
-        <span>Pancakes Served: <span className="nowrap">{cooked} of {pancakes.length}</span></span>
+        <span>{restaurant(game.restaurant_id) || "Pancakes"} Served: <span className="nowrap">{cooked} of {pancakes.length}</span></span>
       </div>
 
       <div className="game__header--count">

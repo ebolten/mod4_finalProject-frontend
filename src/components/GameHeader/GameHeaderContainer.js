@@ -4,20 +4,9 @@ import GameHeaderView from './GameHeaderView';
 
 class GameHeaderContainer extends React.Component {
 
-  state={
-    user:null
+  state = {
+    user: null
   }
-
-  //will return the type of the restaurant from the id
-  type = (num) => {
-    if (num === 1) {
-      return "Pancakes"
-    } else if (num === 2) {
-      return "Eggs"
-    } else if (num === 3) {
-      return "Burgers"
-    }
-  }  
 
   render() {
     return (
@@ -26,7 +15,7 @@ class GameHeaderContainer extends React.Component {
         <GameHeaderView 
           game={this.props.game} 
           username={this.props.user} 
-          restaurant={this.type}
+          restaurant={this.props.restaurant}
           pancakes={this.props.pancakes}
           cooked={this.props.cooked}
           burnt={this.props.burnt}
