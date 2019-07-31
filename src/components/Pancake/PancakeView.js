@@ -67,18 +67,16 @@ class Pancake extends React.Component {
     const status = this.getPancakeStatus();
 
     return (
-      <div className={`pancake`}>
-        <div className="pancake__content">
-          <div className={`pancake-front --${status}`} onClick={this.flip}>
+      <div className={`pan`}>
+        <div className="pan__content">
+          <div className={`pan-front --${status}`} onClick={this.flip}>
             {/* <h2>Front Side</h2> */}
           </div>
-          <div className={`pancake-back --${status}`} onClick={this.removePancake}>
+          <div className={`pan-back --${status}`} onClick={this.removePancake}>
             {/* <h2>Back Side</h2> */}
           </div>
         </div>
       </div>
-
-
     );
   }
 }

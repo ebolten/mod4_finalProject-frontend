@@ -32,9 +32,9 @@ class GameScreenContainer extends React.Component {
         method:'PATCH',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
-          level: this.props.game.level = Math.ceil(this.props.game.score / 100),
-          score: this.props.game.score += addScore,
-          money: this.props.game.money += addMoney
+          level: this.props.game.level = Math.floor(this.props.game.score / 50),
+          score: this.props.game.score + addScore < 0 ? this.props.game.score = 0 : this.props.game.score += addScore,
+          money: this.props.game.money + addMoney < 0 ? this.props.game.money = 0 : this.props.game.money += addMoney
         })
       })
       .then(resp => resp.json())
@@ -45,6 +45,17 @@ class GameScreenContainer extends React.Component {
       })
     }
   }
+
+   //will return the type of the restaurant from the id
+   type = (num) => {
+    if (num === 1) {
+      return "Pancakes"
+    } else if (num === 2) {
+      return "Eggs"
+    } else if (num === 3) {
+      return "Burgers"
+    }
+  }  
 
   //fetch the user playing
   componentDidMount() {
@@ -67,8 +78,14 @@ class GameScreenContainer extends React.Component {
           cooked={this.state.cooked}
           burnt={this.state.burnt}
           raw={this.state.raw}
+          restaurant={this.type}
         />
-        <PancakeContainer countPancakes={this.countPancakes} updateSession={this.updatedSession} />
+        <PancakeContainer 
+          countPancakes={this.countPancakes} 
+          updateSession={this.updatedSession} 
+          game={this.props.game} 
+          restaurant={this.type}
+        />
       </div>
     )
   }
