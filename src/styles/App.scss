@@ -110,7 +110,7 @@ button {
 }
 
 
-/* Pancake
+/* Gameplay Screen
 /------------------------------------*/
 .game {
   height: 100%;
@@ -121,10 +121,10 @@ button {
   &__header {
     width: 100%;
     border-bottom: 5px solid;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: space-between;
+    //display: flex;
+    // flex-flow: row wrap;
+    // align-items: center;
+    // justify-content: space-between;
     font-size: 1.7vw;
 
     &--score {
@@ -132,12 +132,11 @@ button {
       display: flex;
       justify-content: space-evenly;
 
-      > span {padding: 0 0.35em;}
+      > span {padding: 0.25em 0.35em;}
     }
 
-
     &--count {
-      flex: 0.3;
+      flex: 1;
       display: flex;
       justify-content: space-evenly;
       
@@ -151,7 +150,8 @@ button {
   
 }
 
-
+/* Stovetop
+/------------------------------------*/
 .stove {
   flex: 1;
   display: flex;
@@ -208,6 +208,9 @@ button {
   }
 }
 
+
+/* Pancakes (and other flipping foods)
+/------------------------------------*/
 .pan {
   width: 100%;
   position: absolute;
