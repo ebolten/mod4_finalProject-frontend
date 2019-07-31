@@ -36,15 +36,13 @@ function GameHeaderView(props) {
         <span> Earnings: <span className="nowrap">${props.game.money || "0.00"}</span></span>
         <span> Score: {props.game.score || 0}</span>
         <span>{restaurant(game.restaurant_id) || "Pancakes"} Served: <span className="nowrap">{cooked} of {pancakes.length}</span></span>
+        <span> Task: Create {props.game.level * 5} {restaurant(game.restaurant_id)} in 3.0 Second(s), Timer: </span>
       </div>
 
-      <div> Task: Create {props.game.level * 5} {restaurant(game.restaurant_id)} in 3.0 Second(s), Timer: </div>
-
-
       <div className="game__header--count">
-        <div className="--cooked">Cooked<br />{cooked}</div>
-        <div className="--burnt">Burnt<br />{burnt}</div>
-        <div className="--raw">Raw<br />{raw}</div>
+        <div className="--cooked">Cooked: {cooked}</div>
+        <div className="--burnt">Burnt: {burnt}</div>
+        <div className="--raw">Raw: {raw}</div>
       </div>
 
     </div>
