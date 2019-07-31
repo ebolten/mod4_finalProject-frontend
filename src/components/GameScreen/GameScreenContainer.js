@@ -31,7 +31,7 @@ class GameScreenContainer extends React.Component {
         method:'PATCH',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
-          level: Math.floor(this.props.game.score / 50),
+          level: this.props.game.level = Math.floor(this.props.game.score / 50),
           score: this.props.game.score += addScore,
           money: this.props.game.money += addMoney
         })
