@@ -28,6 +28,9 @@ function GameHeaderView(props) {
         <span>{restaurant(game.restaurant_id) || "Pancakes"} Served: <span className="nowrap">{cooked} of {pancakes.length}</span></span>
       </div>
 
+      <div> Task: Create {props.game.level * 5} Pancakes in 3.0 Second(s), Timer: </div>
+
+
       <div className="game__header--count">
         <div className="--cooked">Cooked<br />{cooked}</div>
         <div className="--burnt">Burnt<br />{burnt}</div>
