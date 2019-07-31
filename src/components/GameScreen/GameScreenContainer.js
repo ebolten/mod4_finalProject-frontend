@@ -12,6 +12,7 @@ class GameScreenContainer extends React.Component {
     cooked: 0,
     burnt: 0,
     raw: 0,
+    neededPancakes:1
   }
 
   //callback function to update state of game
@@ -38,7 +39,9 @@ class GameScreenContainer extends React.Component {
       })
       .then(resp => resp.json())
       .then(data => {
-        //nothing needs to go here :)
+        this.setState({
+          neededPancakes:this.props.game.level * 5
+        })
       })
     }
   }
