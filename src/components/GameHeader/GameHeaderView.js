@@ -15,12 +15,15 @@ function GameHeaderView(props) {
   const {game, username, restaurant, pancakes, cooked, burnt, raw} = props
   
   // TODO: All of these are causing errors and I don't know why
-    // const foods = restaurant(game.restaurant_id) // for plural use
-    // const food = foods.substring(0, foods.length -1) // for singular use
-    // const building = ["House", "Shack", "Jaunt", "Cabana", "Emporium", "Buffet"].random()
+    const foods = restaurant(game.restaurant_id) // for plural use
+    
+    const building = ["House", "Shack", "Jaunt", "Cabana", "Emporium", "Buffet"]
+    let randNum = Math.abs(Math.floor(Math.random() * (0 - building.length)))
 
   return (
     <div className="game__header">
+
+      {console.log(randNum)}
 
       {/* <div className="game__header--scoreboard">
         <span> Restaurant Type: {restaurant(game.restaurant_id)} - </span>
@@ -32,13 +35,13 @@ function GameHeaderView(props) {
 
       <div className="game__header--score">
         <span> Level {props.game.level || "1"}</span>
-        <span>{username}'s <span className="nowrap">House of {restaurant(game.restaurant_id) || "Pancakes"}</span></span>
+        <span>{username}'s <span className="nowrap">{building[randNum]} of {restaurant(game.restaurant_id) || "Pancakes"}</span></span>
         <span> Earnings: <span className="nowrap">${props.game.money || "0.00"}</span></span>
         <span> Score: {props.game.score || 0}</span>
         <span>{restaurant(game.restaurant_id) || "Pancakes"} Served: <span className="nowrap">{cooked} of {pancakes.length}</span></span>
       </div>
 
-      <div> Task: Create {props.game.level * 5} {restaurant(game.restaurant_id)} in 3.0 Second(s), Timer: </div>
+      <div> Task: Create {props.game.level === 0 ? 1 * 5 : props.game.level * 5} {restaurant(game.restaurant_id)} in 3.0 Second(s), Timer: </div>
 
 
       <div className="game__header--count">
