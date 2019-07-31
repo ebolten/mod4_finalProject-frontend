@@ -29,7 +29,7 @@ class Pancake extends React.Component {
   };
 
   flip = (event) => {
-    event.target.parentElement.style.transform = "rotateX(540deg)"
+    event.target.parentElement.style.transform = "rotateX(180deg)"
     this.setState({
       flippedAt: this.state.timeCooked
     });

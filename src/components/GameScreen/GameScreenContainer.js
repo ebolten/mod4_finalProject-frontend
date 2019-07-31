@@ -15,7 +15,7 @@ class GameScreenContainer extends React.Component {
   }
 
   //callback function to update state of game
-  callback = (pancakes, cooked, burnt, raw) => {
+  countPancakes = (pancakes, cooked, burnt, raw) => {
     this.setState({
       pancakes: pancakes,
       cooked: cooked,
@@ -65,7 +65,7 @@ class GameScreenContainer extends React.Component {
           burnt={this.state.burnt}
           raw={this.state.raw}
         />
-        <PancakeContainer callback={this.callback} updateSession={this.updatedSession} />
+        <PancakeContainer countPancakes={this.countPancakes} updateSession={this.updatedSession} />
       </div>
     )
   }
