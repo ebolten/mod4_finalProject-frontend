@@ -1,6 +1,6 @@
 # The Pancake Game
 
-A click-based race the clock to flip circular foods and make it big in the pancake biz.
+A click-based race against the clock to flip circular foods and make it big in the pancake biz.
 
 [![Gameplay GIF](https://enigmatic-woodland-50751.herokuapp.com/static/media/pancakegame.d4a2fb7a.gif)](https://www.youtube.com/watch?v=0pZKUUfJpv4)
 
